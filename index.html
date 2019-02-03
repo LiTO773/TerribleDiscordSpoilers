@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Terrible Discord Spoilers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+<body>
+  <div>
+      <a href="https://github.com/LiTO773/TerribleDiscordSpoilers"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    <div class="container">
+      <h1>Terrible Discord Spoilers</h1>
+      <p>One click reveal is for the weak. MAKE THEM CLICK ON ALL CHARACTERS!</p>
+      <textarea name="text" id="text" class="text" rows="11" oninput="getChanges()"></textarea>
+      <br>
+      <br>
+      <p id="message">Output:</p>
+      <textarea name="spoilers" id="spoilers" readonly="true" onclick="clipboard()" class="text" rows="11"></textarea>
+    </div>
+  </div>
+  <script>
+    function getChanges() {
+      var text = document.getElementById("text").value;
+
+      var spoilers = ""
+      for (let i = 0; i < text.length; i++) {
+        if (text.charAt(i) !== "\n") {
+          spoilers += "||" + text.charAt(i) + "||"
+        } else {
+          spoilers += "\n"
+        }
+      }
+      document.getElementById("spoilers").value = spoilers
+    }
+
+    function clipboard() {
+      var text = document.getElementById("spoilers");
+      text.select();
+      document.execCommand("copy");
+      document.getElementById("message").innerText = "Copied to clipboard 👍"
+    }
+  </script>
+</body>
+</html>
