@@ -4,7 +4,7 @@
 Terrible Discord Spoilers is a simple webpage that allows you to create Discord spoilers that reveal one character at a time.
 
 ## Why would anyone use this?
-Great question!
+Maybe to hide some really sick ASCII art, or, you know, message our worst enemy ¯\_(ツ)_/¯.
 
 ## Example
 Before
