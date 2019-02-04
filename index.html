@@ -6,7 +6,6 @@
   <title>Terrible Discord Spoilers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-  <script src="main.js"></script>
 </head>
 <body>
   <div>
@@ -21,6 +20,7 @@ Example: <:ok_hand:> will become ||:ok_hand:||"></textarea>
       <br>
       <p id="message">Click below to copy to clipboard:</p>
       <textarea name="spoilers" id="spoilers" readonly="true" onclick="clipboard()" class="text" rows="11"></textarea>
+      <p class="count">TOTAL CHARACTERS: <span id="totalChars">0</span></p>
     </div>
   </div>
   <script>
@@ -53,7 +53,14 @@ Example: <:ok_hand:> will become ||:ok_hand:||"></textarea>
           spoilers += "\n"
         }
       }
+      console.log(spoilers.length)
       document.getElementById("spoilers").value = spoilers
+      totalChars(spoilers.length)
+    }
+
+    function totalChars(size) {
+      document.getElementById("totalChars").style.color = (size > 2000) ? "#FF0000" : "#99aab5"
+      document.getElementById("totalChars").innerHTML = size
     }
 
     function clipboard() {
