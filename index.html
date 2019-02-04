@@ -14,7 +14,9 @@
     <div class="container">
       <h1>Terrible Discord Spoilers</h1>
       <p>One click reveal is for the weak. MAKE THEM CLICK ON ALL CHARACTERS!</p>
-      <textarea name="text" id="text" class="text" rows="11" oninput="getChanges()"></textarea>
+      <textarea name="text" id="text" class="text" rows="11" oninput="getChanges()" placeholder="Write here the text you want to convert to spoilers.
+For emojis or other special words use <>, this way it will add spoilers to the whole word and not every character.
+Example: <:ok_hand:> will become ||:ok_hand:||"></textarea>
       <br>
       <br>
       <p id="message">Output:</p>
@@ -26,9 +28,27 @@
       var text = document.getElementById("text").value;
 
       var spoilers = ""
+      var specialString = false
       for (let i = 0; i < text.length; i++) {
-        if (text.charAt(i) !== "\n") {
-          spoilers += "||" + text.charAt(i) + "||"
+        if (specialString) {
+          if (text.charAt(i) == ">") {
+            console.log(1);
+            
+            spoilers += '||'
+            specialString = false
+          } else {
+            console.log(2)
+            spoilers += text.charAt(i)
+          }
+        } else if (text.charAt(i) !== "\n") {
+          if (text.charAt(i) == "<") {
+            console.log(3)
+            spoilers += '||'
+            specialString = true
+          } else {
+            console.log(4)
+            spoilers += "||" + text.charAt(i) + "||"
+          }
         } else {
           spoilers += "\n"
         }
